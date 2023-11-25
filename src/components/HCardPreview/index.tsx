@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
 import { useSelector, hCardState } from '@/redux';
 import styles from './index.module.scss';
 import AvatarIcon from '../../../public/avatar.png';
