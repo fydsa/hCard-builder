@@ -1,0 +1,38 @@
+.button {
+	$primary-button-color: #5ca3d8;
+	$secondary-button-color: #7a8d9b;
+	$button-border-radius: 4px;
+	// NOTE: The above variables could be defined in the global variables depending on the design system
+
+	width: 100%;
+	border: 0;
+	outline: 0;
+	min-height: 2.75rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	border-radius: $button-border-radius;
+	transition: background-color 0.3s;
+	font-size: 18px;
+	color: $white;
+	font-weight: 700;
+
+	&.primary {
+		background-color: $primary-button-color;
+		border-bottom: 2px solid darken($primary-button-color, 15%);
+		&:hover,
+		&:focus {
+			background-color: darken($primary-button-color, 20%);
+		}
+	}
+	&.secondary {
+		background-color: $secondary-button-color;
+		border-bottom: 2px solid darken($secondary-button-color, 15%);
+		&:hover,
+		&:focus {
+			background-color: darken($secondary-button-color, 20%);
+		}
+	}
+	&.disabled {
+		background-color: $disabled;
+	}
+}

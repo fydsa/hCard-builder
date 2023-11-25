@@ -1,0 +1,31 @@
+.hCardForm {
+	fieldset {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+
+		> *:not(legend) {
+			width: calc(50% - 0.5rem);
+		}
+	}
+
+	.actionButtons {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	@media screen and (max-width: $breakpoint-mobile) {
+		padding: 0.5rem 1rem;
+
+		fieldset {
+			> *:not(legend) {
+				width: 100%;
+			}
+		}
+
+		.actionButtons {
+			flex-wrap: wrap;
+		}
+	}
+}
