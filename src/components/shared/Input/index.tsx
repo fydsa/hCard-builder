@@ -1,6 +1,8 @@
+import { InputHTMLAttributes } from 'react';
 import styles from './index.module.scss';
 
-//TODO: handle types
-export const Input = (props: any) => {
+export type PropTypes = InputHTMLAttributes<HTMLInputElement>;
+
+export const Input = (props: PropTypes) => {
 	return <input className={styles.input} {...props} />;
 };

@@ -1,20 +1,22 @@
-import { ReactNode } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import classnames from 'classnames';
 import styles from './index.module.scss';
 
-type PropTypes = {
-	children: ReactNode;
-	type?: 'submit';
-	onClick?: () => void;
-};
+export type PropTypes = {
+	isPrimary?: boolean;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button = ({ children, ...props }: any) => {
+export const Button = ({
+	children,
+	isPrimary = false,
+	...props
+}: PropTypes) => {
 	return (
 		<button
 			className={classnames(
 				styles.button,
-				props.isPrimary ? styles.primary : styles.secondary,
-				props.isDisabled && styles.disabled
+				isPrimary ? styles.primary : styles.secondary,
+				props.disabled && styles.disabled
 			)}
 			{...props}
 		>

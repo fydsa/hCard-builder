@@ -1,20 +1,11 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { HCardFields } from '@/utils/enums';
 
-type HCardFieldsType = {
-	name: string;
-	surname: string;
-	email: string;
-	phone: string;
-	houseName: string;
-	street: string;
-	suburb: string;
-	postcode: string;
-	country: string;
-};
+type ImageType = string | null;
 
 type HCardSliceState = {
-	fields: HCardFieldsType;
-	image: any;
+	fields: { [key in HCardFields]: string };
+	image: ImageType;
 };
 
 const initialState: HCardSliceState = {
@@ -26,6 +17,7 @@ const initialState: HCardSliceState = {
 		houseName: '',
 		street: '',
 		suburb: '',
+		state: '',
 		postcode: '',
 		country: '',
 	},
@@ -36,11 +28,19 @@ export const hCardSlice = createSlice({
 	name: 'hCard',
 	initialState,
 	reducers: {
-		setFields: (state: any, action) => {
+		setFields: (
+			state: HCardSliceState,
+			action: PayloadAction<{ field: HCardFields; value: string }>
+		) => {
 			const { field, value } = action.payload;
 			state.fields[field] = value;
 		},
-		setImage: (state: any, action) => {
+		setImage: (
+			state: HCardSliceState,
+			action: PayloadAction<{
+				value: ImageType;
+			}>
+		) => {
 			const { value } = action.payload;
 			state.image = value;
 		},

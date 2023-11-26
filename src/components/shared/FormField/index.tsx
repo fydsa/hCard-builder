@@ -1,5 +1,10 @@
-import { RegisterOptions, useFormContext, Controller } from 'react-hook-form';
-import { Input } from '../Input';
+import {
+	RegisterOptions,
+	useFormContext,
+	Controller,
+	FieldValues,
+} from 'react-hook-form';
+import { Input, PropTypes as InputPropTypes } from '../Input';
 import styles from './index.module.scss';
 
 type FieldType = 'text' | 'email' | 'tel';
@@ -11,12 +16,18 @@ type FieldType = 'text' | 'email' | 'tel';
 
 type PropTypes = {
 	type?: FieldType;
-	name: string;
 	label?: string;
+	name: string;
 	rules?: RegisterOptions;
-};
+} & InputPropTypes;
 
-export const FormField = ({ label, name, type, rules, ...props }: any) => {
+export const FormField = ({
+	label,
+	name,
+	type,
+	rules,
+	...props
+}: PropTypes) => {
 	const {
 		control,
 		formState: { errors },
@@ -29,14 +40,17 @@ export const FormField = ({ label, name, type, rules, ...props }: any) => {
 				name={name}
 				control={control}
 				rules={rules}
-				render={({ field }) => (
-					<Input
-						type={type}
-						aria-invalid={errors[name] ? 'true' : 'false'}
-						{...field}
-						{...props}
-					/>
-				)}
+				render={({ field }: FieldValues) => {
+					const { ref, ...otherFieldProps } = field; //NOTE: Excluded ref to resolve browser warning of passing ref to input
+					return (
+						<Input
+							type={type}
+							aria-invalid={errors[name] ? 'true' : 'false'}
+							{...otherFieldProps}
+							{...props}
+						/>
+					);
+				}}
 			/>
 			{errors[name] && (
 				<p className={styles.errorMessage}>

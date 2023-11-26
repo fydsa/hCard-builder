@@ -1,16 +1,22 @@
-import { useRef } from 'react';
-import { Button } from '../Button';
+import { ChangeEvent, ReactNode, useRef } from 'react';
+import { Button, PropTypes as ButtonPropTypes } from '../Button';
 import styles from './index.module.scss';
+
+type PropTypes = {
+	handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	accept?: 'image/*';
+	children: ReactNode;
+} & ButtonPropTypes;
 
 export const UploadButton = ({
 	handleChange,
 	accept = 'image/*',
 	children,
-}: any) => {
-	const inputRef: any = useRef();
+}: PropTypes) => {
+	const inputRef = useRef<HTMLInputElement>(null);
 
 	const onClick = () => {
-		inputRef.current.click();
+		inputRef.current?.click();
 	};
 
 	return (

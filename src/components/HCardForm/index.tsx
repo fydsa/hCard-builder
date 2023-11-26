@@ -9,7 +9,9 @@ import {
 	phoneNumberValidator,
 } from '../shared/FormField/utils';
 import { useSelector, hCardState, hCardSlice, useDispatch } from '@/redux';
+import { HCardFields } from '@/utils/enums';
 import styles from './index.module.scss';
+import { ChangeEvent } from 'react';
 
 export const HCardForm = () => {
 	const { fields } = useSelector(hCardState);
@@ -20,8 +22,8 @@ export const HCardForm = () => {
 
 	const dispatch = useDispatch();
 
-	const dispatchOnBlur = (e: any) => {
-		const name = e.target.name;
+	const dispatchOnBlur = (e: ChangeEvent<HTMLInputElement>) => {
+		const name = e.target.name as HCardFields;
 		dispatch(
 			hCardSlice.actions.setFields({
 				field: name,
@@ -43,25 +45,25 @@ export const HCardForm = () => {
 					<legend>Personal Details</legend>
 					<FormField
 						label={'Given name'}
-						name={'name'}
+						name={HCardFields.Name}
 						rules={{ required: 'cannot be empty' }}
 						onBlur={dispatchOnBlur}
 					/>
 					<FormField
 						label={'Surname'}
-						name={'surname'}
+						name={HCardFields.Surname}
 						rules={{ required: 'cannot be empty' }}
 						onBlur={dispatchOnBlur}
 					/>
 					<FormField
 						label={'Email'}
-						name={'email'}
+						name={HCardFields.Email}
 						rules={emailValidator}
 						onBlur={dispatchOnBlur}
 					/>
 					<FormField
 						label={'Phone'}
-						name={'phone'}
+						name={HCardFields.Phone}
 						type={'tel'}
 						rules={phoneNumberValidator}
 						onBlur={dispatchOnBlur}
@@ -71,50 +73,50 @@ export const HCardForm = () => {
 					<legend>Address</legend>
 					<FormField
 						label={'House name'}
-						name={'houseName'}
+						name={HCardFields.HouseName}
 						onBlur={dispatchOnBlur}
 					/>
 					<FormField
 						label={'Street'}
-						name={'street'}
+						name={HCardFields.Street}
 						onBlur={dispatchOnBlur}
 					/>
 					<FormField
 						label={'Suburb'}
-						name={'suburb'}
+						name={HCardFields.Suburb}
 						onBlur={dispatchOnBlur}
 					/>
 					<FormField
-						label={'state'}
-						name={'state'}
+						label={'State'}
+						name={HCardFields.State}
 						onBlur={dispatchOnBlur}
 					/>
 					<FormField
-						label={'postcode'}
-						name={'postcode'}
+						label={'Postcode'}
+						name={HCardFields.Postcode}
 						onBlur={dispatchOnBlur}
 					/>
 					<FormField
 						label={'country'}
-						name={'country'}
+						name={HCardFields.Country}
 						onBlur={dispatchOnBlur}
 					/>
 				</fieldset>
 				<div className={styles.actionButtons}>
 					<UploadButton
-						handleChange={(e: any) => {
-							const file = e.target.files[0];
+						handleChange={(e: ChangeEvent<HTMLInputElement>) => {
+							const files = e.target.files;
 
-							if (file) {
+							if (!!files?.length) {
 								const reader = new FileReader();
 								reader.onload = () => {
 									dispatch(
 										hCardSlice.actions.setImage({
-											value: reader.result,
+											value: reader.result as string,
 										})
 									);
 								};
-								reader.readAsDataURL(file);
+								reader.readAsDataURL(files[0]);
 							}
 						}}
 					>
