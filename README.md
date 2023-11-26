@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# hCard Builder App
 
-## Getting Started
+A recorded demo of the application is available for viewing. Please check [this link](https://www.loom.com/share/51f932073f5e482b8e4fde5940a3c62d?sid=eeea24cb-0042-4018-8dda-86320322bb92).
 
-First, run the development server:
+## Tools
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+-   **Next.js Application**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+-   **Redux State Management**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+-   **React-Hook-Form for Validation**
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+-   **CSS Modules and Sass**
 
-## Learn More
+-   **Cypress Components & End-to-End Testing**
 
-To learn more about Next.js, take a look at the following resources:
+-   **Dockerized Deployment**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Run
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+To run the application using Docker, ensure you have Docker installed. If you have Docker, execute the following command:
 
-## Deploy on Vercel
+`docker run --publish 3000:3000 domain-test:1.0.0`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+If you don't have Docker installed, you can run the application locally using `npm`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+First, install the necessary dependencies:
+
+`npm install`
+
+Then, start the application with:
+
+`npm run dev`
