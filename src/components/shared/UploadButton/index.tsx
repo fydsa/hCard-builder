@@ -27,6 +27,7 @@ export const UploadButton = ({
 				onChange={handleChange}
 				className={styles.uploadInput}
 				ref={inputRef}
+				data-cy='upload-input'
 			/>
 			<Button type={'button'} onClick={onClick}>
 				{children}

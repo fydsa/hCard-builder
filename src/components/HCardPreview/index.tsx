@@ -22,18 +22,22 @@ export const HCardPreview = () => {
 					priority
 				/>
 				<div className={styles.cardContent}>
-					<p>
+					<p data-cy={'name-preview'}>
 						Name: {fields.name} {fields.surname}
 					</p>
-					<p>Email: {fields.email}</p>
-					<p>Phone: {fields.phone}</p>
-					<p className={styles.address}>
+					<p data-cy={'email-preview'}>Email: {fields.email}</p>
+					<p data-cy={'phone-preview'}>Phone: {fields.phone}</p>
+					<p className={styles.address} data-cy={'address-preview'}>
 						Address: {fields.houseName} {fields.street}{' '}
 						{fields.suburb}
 					</p>
 					<div className={styles.hStack}>
-						<p>Postcode: {fields.postcode} </p>
-						<p>Country: {fields.country}</p>
+						<p data-cy={'postcode-preview'}>
+							Postcode: {fields.postcode}{' '}
+						</p>
+						<p data-cy={'country-preview'}>
+							Country: {fields.country}
+						</p>
 					</div>
 				</div>
 			</div>

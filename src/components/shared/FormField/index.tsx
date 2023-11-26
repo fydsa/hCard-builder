@@ -34,7 +34,7 @@ export const FormField = ({
 	} = useFormContext();
 
 	return (
-		<div className={styles.formField}>
+		<div className={styles.formField} data-cy={`${name}-field`}>
 			<label>{label}</label>
 			<Controller
 				name={name}

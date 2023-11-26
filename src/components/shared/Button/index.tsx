@@ -19,6 +19,7 @@ export const Button = ({
 				props.disabled && styles.disabled
 			)}
 			{...props}
+			data-cy='button'
 		>
 			{children}
 		</button>
