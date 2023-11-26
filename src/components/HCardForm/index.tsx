@@ -1,5 +1,6 @@
 'use client';
 
+import { ChangeEvent } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { Button } from '../shared/Button';
 import { UploadButton } from '../shared/UploadButton';
@@ -11,7 +12,6 @@ import {
 import { useSelector, hCardState, hCardSlice, useDispatch } from '@/redux';
 import { HCardFields } from '@/utils/enums';
 import styles from './index.module.scss';
-import { ChangeEvent } from 'react';
 
 export const HCardForm = () => {
 	const { fields } = useSelector(hCardState);
