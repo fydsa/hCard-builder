@@ -18,7 +18,9 @@ A recorded demo of the application is available for viewing. Please check [this 
 
 ## Run
 
-To run the application using Docker, ensure you have Docker installed. If you have Docker, execute the following command:
+To run the application using Docker, ensure you have Docker installed. If you have Docker, execute the following commands:
+
+`docker build -t domain-test:1.0.0 .`
 
 `docker run --publish 3000:3000 domain-test:1.0.0`
 
