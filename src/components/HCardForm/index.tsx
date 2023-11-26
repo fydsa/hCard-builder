@@ -32,6 +32,22 @@ export const HCardForm = () => {
 		);
 	};
 
+	const handleImageUpload = (e: ChangeEvent<HTMLInputElement>) => {
+		const files = e.target.files;
+
+		if (!!files?.length) {
+			const reader = new FileReader();
+			reader.onload = () => {
+				dispatch(
+					hCardSlice.actions.setImage({
+						value: reader.result as string,
+					})
+				);
+			};
+			reader.readAsDataURL(files[0]);
+		}
+	};
+
 	return (
 		<FormProvider {...form}>
 			<form
@@ -103,23 +119,7 @@ export const HCardForm = () => {
 					/>
 				</fieldset>
 				<div className={styles.actionButtons}>
-					<UploadButton
-						handleChange={(e: ChangeEvent<HTMLInputElement>) => {
-							const files = e.target.files;
-
-							if (!!files?.length) {
-								const reader = new FileReader();
-								reader.onload = () => {
-									dispatch(
-										hCardSlice.actions.setImage({
-											value: reader.result as string,
-										})
-									);
-								};
-								reader.readAsDataURL(files[0]);
-							}
-						}}
-					>
+					<UploadButton handleChange={handleImageUpload}>
 						Upload Avatar
 					</UploadButton>
 					<Button type={'submit'} isPrimary>
