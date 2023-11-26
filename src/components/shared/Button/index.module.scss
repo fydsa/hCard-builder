@@ -16,7 +16,7 @@
 	color: $white;
 	font-weight: 700;
 
-	&.primary {
+	&.primary:not(.disabled) {
 		background-color: $primary-button-color;
 		border-bottom: 2px solid darken($primary-button-color, 15%);
 		&:hover,
@@ -24,7 +24,7 @@
 			background-color: darken($primary-button-color, 20%);
 		}
 	}
-	&.secondary {
+	&.secondary:not(.disabled) {
 		background-color: $secondary-button-color;
 		border-bottom: 2px solid darken($secondary-button-color, 15%);
 		&:hover,

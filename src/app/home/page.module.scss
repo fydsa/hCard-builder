@@ -12,11 +12,12 @@
 	section {
 		> * {
 			margin: 0 auto;
-			@media screen and (min-width: $breakpoint-desktop) {
+			max-width: 50%;
+			@media screen and (max-width: $breakpoint-desktop) {
 				max-width: 70%;
 			}
-			@media screen and (min-width: $breakpoint-large-desktop) {
-				max-width: 50%;
+			@media screen and (max-width: $breakpoint-tablet) {
+				max-width: 80%;
 			}
 			@media screen and (max-width: $breakpoint-mobile) {
 				max-width: 100%;
@@ -31,6 +32,10 @@
 		}
 		&.previewSection {
 			background-color: #e7e9ec;
+		}
+
+		@media screen and (max-width: $breakpoint-tablet) {
+			padding-top: 1rem;
 		}
 	}
 }
